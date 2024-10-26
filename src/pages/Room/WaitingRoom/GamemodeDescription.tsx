@@ -1,4 +1,4 @@
-import { Divider, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 type GamemodeDescriptionProps = {
   gamemode: "coop" | "versus";
@@ -25,7 +25,6 @@ export const GamemodeDescription = (props: GamemodeDescriptionProps) => {
       <Typography variant="h3" fontWeight="bold" color="primary">
         {gamemodeInfo[props.gamemode].title}
       </Typography>
-      <Divider />
       <Typography
         variant="body1"
         whiteSpace="pre-line"

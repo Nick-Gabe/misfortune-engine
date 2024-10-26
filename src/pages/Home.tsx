@@ -1,18 +1,20 @@
 import { Button, TextField, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { nanoid } from "nanoid";
 import { useLocalStorage } from "../shared/useStorage";
 
 export const Home = () => {
   const navigate = useNavigate();
   const [user, setUser] = useLocalStorage<User>("user", {
-    id: nanoid(5),
+    id: nanoid(8),
     name: "",
   });
+  const [searchParams] = useSearchParams();
+  const specificRoom = searchParams.get("room");
 
-  const enterRoom = () => {
-    // do api request, passing gamemode
-    navigate(`/room/${nanoid(5)}`);
+  const enterRoom = async (gameMode: GameMode) => {
+    const roomId = specificRoom ?? nanoid(8);
+    navigate(`/room/${roomId}`, { state: { gameMode } });
   };
 
   return (
@@ -24,7 +26,7 @@ export const Home = () => {
         <Typography variant="body1" color="primary">
           Who are you?
         </Typography>
-        <div className="bg-yellow-100 rounded-md overflow-hidden [&_input]:pt-2">
+        <div className="bg-yellow-100 rounded-md overflow-hidden [&_input]:pt-2 [&_input]:text-black-900">
           <TextField
             variant="filled"
             autoComplete="off"
@@ -37,7 +39,7 @@ export const Home = () => {
         <Button
           variant="contained"
           color="primary"
-          onClick={enterRoom}
+          onClick={() => enterRoom("versus")}
           disabled={!user.name.length}
         >
           Versus
