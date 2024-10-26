@@ -15,6 +15,10 @@ const theme = createTheme({
     error: {
       main: "#f44336",
     },
+    text: {
+      primary: "#f9fafb",
+      secondary: "#d1d5db",
+    },
     background: {
       default: "#1e293b",
       paper: "#334155",

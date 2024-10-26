@@ -1,46 +1,16 @@
-import { SuperVizRoomProvider, WhoIsOnline } from "@superviz/react-sdk";
-import { useNavigate, useParams } from "react-router-dom";
-import { useLocalStorage } from "../../shared/useStorage";
-import { useEffect } from "react";
+import { WaitingRoom } from "./WaitingRoom/WaitingRoom";
+import { useState } from "react";
 
-const API_KEY = import.meta.env.VITE_SUPERVIZ_API_KEY;
+type RoomScreen = "waitingRoom";
 
-const RoomWithoutProviders = () => {
-  return (
-    <main>
-      <div
-        className="absolute bottom-4 right-4 bg-white/50 p-2 rounded-full"
-        id="online"
-      />
-      <WhoIsOnline position="online" disableFollowMe />
-    </main>
-  );
-};
+export const RoomWithoutProviders = () => {
+  const [roomScreen] = useState<RoomScreen>("waitingRoom");
 
-export const Room = () => {
-  const { id = "" } = useParams();
-  const navigate = useNavigate();
-  const [user] = useLocalStorage<User | null>("user", null);
+  const screens = {
+    waitingRoom: WaitingRoom,
+  };
 
-  useEffect(() => {
-    if (!user) {
-      return navigate("/");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  const ScreenComponent = screens[roomScreen];
 
-  if (!user) {
-    return navigate("/");
-  }
-
-  return (
-    <SuperVizRoomProvider
-      developerKey={API_KEY}
-      group={{ id, name: id }}
-      roomId={id}
-      participant={user}
-    >
-      <RoomWithoutProviders />
-    </SuperVizRoomProvider>
-  );
+  return <ScreenComponent />;
 };

@@ -11,6 +11,7 @@ export const Home = () => {
   });
 
   const enterRoom = () => {
+    // do api request, passing gamemode
     navigate(`/room/${nanoid(5)}`);
   };
 

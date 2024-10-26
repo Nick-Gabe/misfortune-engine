@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./Home";
-import { Room } from "./Room/Room";
+import { Room } from "./Room";
 
 export const Pages = () => {
   return (
