@@ -18,7 +18,7 @@ export const Home = () => {
   return (
     <main className="flex flex-col gap-3">
       <Typography variant="h1" color="primary">
-        Infortune Engine
+        Misfortune Engine
       </Typography>
       <div className="flex flex-col items-center justify-center mb-6">
         <Typography variant="body1" color="primary">
