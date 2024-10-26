@@ -5,7 +5,7 @@ import { useLocalStorage } from "../shared/useStorage";
 
 export const Home = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useLocalStorage("user", {
+  const [user, setUser] = useLocalStorage<User>("user", {
     id: nanoid(5),
     name: "",
   });
@@ -27,19 +27,12 @@ export const Home = () => {
           <TextField
             variant="filled"
             autoComplete="off"
+            value={user.name}
             onChange={(e) => setUser({ ...user, name: e.target.value })}
           />
         </div>
       </div>
       <div className="flex justify-evenly">
-        {/* <Button
-          variant="contained"
-          color="primary"
-          onClick={enterRoom}
-          disabled={!user.name.length}
-        >
-          CO-OP
-        </Button> */}
         <Button
           variant="contained"
           color="primary"
