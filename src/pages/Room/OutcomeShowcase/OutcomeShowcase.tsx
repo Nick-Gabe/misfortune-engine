@@ -101,7 +101,6 @@ export const OutcomeShowcase = ({
     };
 
     if (userIsLeader && userBeingShowcased && !room?.currentShowcase?.outcome) {
-      console.debug("fetching outcome");
       fetchOutcome();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -190,7 +189,7 @@ export const OutcomeShowcase = ({
           >
             <TextSpinner
               text="LOADING LOADING LOADING LOADING"
-              radius={110}
+              radius={180}
               fontSize={18}
               letterSpacing={11}
             />
