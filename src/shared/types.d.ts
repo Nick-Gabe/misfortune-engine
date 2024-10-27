@@ -8,7 +8,7 @@ type User = {
 
 type GameMode = "versus" | "coop";
 
-type RoomScreen = "waitingRoom" | "decidingMisfortune" | "misfortuneDecided" | "outcomeShowcase" | "leaderboard" | "results";
+type RoomScreen = "waitingRoom" | "decidingMisfortune" | "answeringMisfortune" | "outcomeShowcase" | "leaderboard" | "results";
 
 type Room = {
   id: string;
@@ -18,7 +18,7 @@ type Room = {
   currentMisfortune?: {
     announcement: string;
     content: string;
-  };
+  } | null;
   currentShowcase?: {
     user: User;
     outcome: {

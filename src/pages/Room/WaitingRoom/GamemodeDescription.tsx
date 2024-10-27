@@ -43,8 +43,8 @@ export const GamemodeDescription = (props: GamemodeDescriptionProps) => {
           stroke="black"
           strokeWidth={10}
         />
-        ) can start the game and continue to the next round. You need at least 2
-        players for this mode.
+        ) can start the game and continue rounds. You need at least 2 players
+        for this mode.
       </Typography>
     </div>
   );

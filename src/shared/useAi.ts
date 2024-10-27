@@ -49,7 +49,7 @@ export const useAiMutation = () => useMutation({
           Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
         },
         body: JSON.stringify({
-          model: "gpt-4o-mini",
+          model: "gpt-4o",
           messages: messages,
           temperature: 0.8,
         }),
