@@ -8,7 +8,7 @@ type User = {
 
 type GameMode = "versus" | "coop";
 
-type RoomScreen = "waitingRoom" | "decidingMisfortune" | "misfortuneDecided" | "outcomeShowcase" | "leaderboard";
+type RoomScreen = "waitingRoom" | "decidingMisfortune" | "misfortuneDecided" | "outcomeShowcase" | "leaderboard" | "results";
 
 type Room = {
   id: string;
