@@ -3,6 +3,10 @@ import { WaitingRoom } from "./WaitingRoom/WaitingRoom";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useBeforeUnload, useLocation, useParams } from "react-router-dom";
 import { useLocalStorage } from "../../shared/useStorage";
+import { DecidingMisfortune } from "./DecidingMisfortune/DecidingMisfortune";
+import { MisfortuneDecided } from "./MisfortuneDecided/MisfortuneDecided";
+import { OutcomeShowcase } from "./OutcomeShowcase/OutcomeShowcase";
+import { Leaderboard } from "./Leaderboard/Leaderboard";
 
 export type RoomScreenProps = {
   user: User;
@@ -29,6 +33,11 @@ export const RoomWithoutProviders = () => {
     players: user ? [user] : [],
     gameMode: location.state?.gameMode || "versus",
   });
+  const roomRef = useRef(room);
+
+  useEffect(() => {
+    roomRef.current = room;
+  }, [room]);
 
   const beforeUnload = useCallback(() => {
     if (hasJoinedRoom) {
@@ -44,8 +53,20 @@ export const RoomWithoutProviders = () => {
       realtime.subscribe("room:state", (payload: SubscribeCallback<Room>) => {
         console.log("👝 state", payload);
         setRoom(payload.data);
+        if (payload.data.players[0].id === user.id) {
+          if (
+            payload.data.screen === "misfortuneDecided" &&
+            payload.data.players.every((p) => p.answer)
+          ) {
+            realtime.publish("room:state", {
+              ...payload.data,
+              screen: "outcomeShowcase",
+            });
+          }
+        }
       });
       realtime.subscribe("room:join", (payload: SubscribeCallback<User>) => {
+        const room = roomRef.current;
         if (payload.data.id === user.id) {
           return;
         }
@@ -57,10 +78,22 @@ export const RoomWithoutProviders = () => {
         }
       });
       realtime.subscribe("room:leave", (payload: SubscribeCallback<User>) => {
+        const room = roomRef.current;
         if (room?.players[0].id === user.id) {
           realtime.publish("room:state", {
             ...room,
             players: room?.players.filter((p) => p.id !== payload.data.id),
+          });
+        }
+      });
+      realtime.subscribe("room:answer", (payload: SubscribeCallback<User>) => {
+        const room = roomRef.current;
+        if (room?.players[0].id === user.id) {
+          realtime.publish("room:state", {
+            ...room,
+            players: room?.players.map((p) =>
+              p.id === payload.data.id ? payload.data : p
+            ),
           });
         }
       });
@@ -69,15 +102,19 @@ export const RoomWithoutProviders = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [realtime]);
 
-  const screens = {
+  const screens: Record<RoomScreen, (props: RoomScreenProps) => JSX.Element> = {
     waitingRoom: WaitingRoom,
+    decidingMisfortune: DecidingMisfortune,
+    misfortuneDecided: MisfortuneDecided,
+    outcomeShowcase: OutcomeShowcase,
+    leaderboard: Leaderboard,
   };
 
   const ScreenComponent = screens[room?.screen || "waitingRoom"];
 
   return (
     <div>
-      <ScreenComponent {...realtime} user={user!} room={room} />;
+      <ScreenComponent {...realtime} user={user!} room={room} />
       <div className="absolute">
         <Realtime />
       </div>
