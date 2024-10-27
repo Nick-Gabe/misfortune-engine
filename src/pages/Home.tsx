@@ -71,25 +71,40 @@ export const Home = () => {
           />
         </div>
       </div>
-      <Typography
-        variant="h2"
-        fontSize={20}
-        fontWeight="bold"
-        color="textPrimary"
-        textAlign="center"
-      >
-        Game modes
-      </Typography>
-      <div className="flex justify-evenly">
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => enterRoom("versus")}
-          disabled={!user.name.length}
-        >
-          Versus
-        </Button>
-      </div>
+      {specificRoom ? (
+        <div className="flex justify-evenly">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => enterRoom("versus")}
+            disabled={!user.name.length}
+          >
+            Enter room
+          </Button>
+        </div>
+      ) : (
+        <>
+          <Typography
+            variant="h2"
+            fontSize={20}
+            fontWeight="bold"
+            color="textPrimary"
+            textAlign="center"
+          >
+            Game modes
+          </Typography>
+          <div className="flex justify-evenly">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => enterRoom("versus")}
+              disabled={!user.name.length}
+            >
+              Versus
+            </Button>
+          </div>
+        </>
+      )}
     </main>
   );
 };
