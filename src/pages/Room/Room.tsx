@@ -67,7 +67,7 @@ export const RoomWithoutProviders = () => {
         if (payload.data.players[0].id === user.id) {
           if (
             payload.data.screen === "answeringMisfortune" &&
-            payload.data.players.every((p) => p.answer)
+            payload.data.players.every((p) => p.answer !== null)
           ) {
             realtime.publish("room:state", {
               ...payload.data,
