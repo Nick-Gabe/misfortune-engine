@@ -30,13 +30,15 @@ export const AnsweringMisfortune = ({
   }, []);
 
   const sendAnswer = () => {
+    const userIndex = room?.players.findIndex((p) => p.id === user.id);
     setAnswered(true);
     setTimeout(() => {
       publish("room:answer", {
         ...user,
         answer,
       });
-    }, Math.random() * 2000);
+      // In order for events to not conflict, we ensure each is sent at a different time
+    }, (userIndex ?? Math.random() * 3) * 1000);
   };
 
   return (

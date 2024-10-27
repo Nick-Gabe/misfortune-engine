@@ -1,4 +1,9 @@
-import { Realtime, useRealtime, useSuperviz } from "@superviz/react-sdk";
+import {
+  Realtime,
+  useRealtime,
+  useSuperviz,
+  WhoIsOnline,
+} from "@superviz/react-sdk";
 import { WaitingRoom } from "./WaitingRoom/WaitingRoom";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useBeforeUnload, useLocation, useParams } from "react-router-dom";
@@ -8,6 +13,7 @@ import { AnsweringMisfortune } from "./AnsweringMisfortune/AnsweringMisfortune";
 import { OutcomeShowcase } from "./OutcomeShowcase/OutcomeShowcase";
 import { Leaderboard } from "./Leaderboard/Leaderboard";
 import { Results } from "./Results/Results";
+import { motion } from "framer-motion";
 
 export type RoomScreenProps = {
   user: User;
@@ -115,6 +121,13 @@ export const RoomWithoutProviders = () => {
 
   const ScreenComponent = screens[room?.screen || "waitingRoom"];
 
+  const roomsThatIncludeWhoIsOnline: RoomScreen[] = [
+    "answeringMisfortune",
+    "decidingMisfortune",
+    "leaderboard",
+    "outcomeShowcase",
+  ];
+
   return (
     <div>
       <ScreenComponent
@@ -126,6 +139,17 @@ export const RoomWithoutProviders = () => {
       <div className="absolute">
         <Realtime />
       </div>
+      <motion.div
+        animate={{
+          bottom:
+            room && roomsThatIncludeWhoIsOnline.includes(room.screen)
+              ? 16
+              : -50,
+        }}
+        className="absolute left-4"
+        id="online"
+      />
+      <WhoIsOnline position="online" disableFollowMe />
     </div>
   );
 };
