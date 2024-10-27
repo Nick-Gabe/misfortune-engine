@@ -1,13 +1,18 @@
 import { useEffect, useMemo, useState } from "react";
 import { RoomScreenProps } from "../Room";
 import { motion } from "framer-motion";
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useAiMutation } from "../../../shared/useAi";
 import { TextSpinner } from "../../../components/TextSpinner/TextSpinner";
 import { Confetti, CrownSimple, Skull } from "@phosphor-icons/react";
 import { AnimatedBackground } from "animated-backgrounds";
+import { LeaderButton } from "../../../components/LeaderContinueButton";
 
-export const OutcomeShowcase = ({ room, user, publish }: RoomScreenProps) => {
+export const OutcomeShowcase = ({
+  room,
+  publish,
+  userIsLeader,
+}: RoomScreenProps) => {
   const { mutateAsync } = useAiMutation();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const initialPlayers = useMemo(() => room?.players, []);
@@ -18,13 +23,19 @@ export const OutcomeShowcase = ({ room, user, publish }: RoomScreenProps) => {
   );
 
   useEffect(() => {
+    if (!room?.currentShowcase?.outcome) {
+      setFinishedCurrentShowcase(false);
+    }
+  }, [room?.currentShowcase?.outcome]);
+
+  useEffect(() => {
     const fetchOutcome = async () => {
       if (!userBeingShowcased) return;
 
       const data = await mutateAsync([
         {
           role: "system",
-          content: `You're in a game where you decide misfortunes that happen to players and WILL kill them. Their objective is to survive them. You say the misfortune and the user will say what they made to survive. After the user replies with their survival strategy, return a JSON containing how the story continued from the start, mentioning the user decision on it and saying if they survived or not at the end. It should include no more than 250 characters, try to divide it in a few sentences with periods. Also include how many points the user got from their approach, being 0 the worst, where they didn't survive at all, and 10 the best, where they survived without any harm and in a creative way. The JSON you must return should follow this structure: { points: number, content: string }`,
+          content: `You're in a game where you decide misfortunes that happen to players and WILL kill them. Their objective is to survive them. You say the misfortune and the user will say what they made to survive. After the user replies with their survival strategy, return a JSON containing how the story continued from the start, mentioning the user decision on it and saying if they survived or not at the end. It should include at least 5 sentences, each needs to end with a period. Also include how many points the user got from their approach. Not surviving means they got 0 points, but if they survived, the point varies depending on the creativeness of the solution and if the strategy is flawless. The JSON you must return should follow this structure: { points: number, content: string }`,
         },
         {
           role: "user",
@@ -61,10 +72,15 @@ export const OutcomeShowcase = ({ room, user, publish }: RoomScreenProps) => {
       ]);
 
       const json = JSON.parse(data.choices[0].message.content);
+
+      const newPointsHistory = [
+        ...userBeingShowcased.pointsHistory,
+        json.points,
+      ];
       const userBeingShowcasedWithPoints: User = {
         ...userBeingShowcased,
-        points: json.points,
-        pointsHistory: [...userBeingShowcased.pointsHistory, json.points],
+        points: newPointsHistory.reduce((acc, curr) => acc + curr, 0),
+        pointsHistory: newPointsHistory,
       };
 
       setTimeout(() => {
@@ -84,11 +100,8 @@ export const OutcomeShowcase = ({ room, user, publish }: RoomScreenProps) => {
       }, 4500);
     };
 
-    if (
-      user.id === room?.players[0].id &&
-      userBeingShowcased &&
-      room.currentShowcase?.outcome === null
-    ) {
+    if (userIsLeader && userBeingShowcased && !room?.currentShowcase?.outcome) {
+      console.debug("fetching outcome");
       fetchOutcome();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -276,10 +289,10 @@ export const OutcomeShowcase = ({ room, user, publish }: RoomScreenProps) => {
                   })}
               </p>
             </motion.div>
-            <div className="self-end flex gap-4">
+            <div className="flex justify-between items-center w-full">
               {finishedCurrentShowcase && (
                 <motion.div
-                  className="absolute right-5 top-5"
+                  className="absolute right-5 top-5 flex flex-col justify-center items-center"
                   initial={{ opacity: 0, scale: 10 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.2 }}
@@ -296,9 +309,9 @@ export const OutcomeShowcase = ({ room, user, publish }: RoomScreenProps) => {
                       delay: 0.2,
                     }}
                   >
-                    {!userBeingShowcased?.points ? (
+                    {!room.currentShowcase.outcome.points ? (
                       <Skull weight="duotone" size={62} />
-                    ) : userBeingShowcased?.points > 7 ? (
+                    ) : room.currentShowcase.outcome.points > 7 ? (
                       <Confetti weight="duotone" size={62} />
                     ) : (
                       <CrownSimple weight="duotone" size={62} />
@@ -306,16 +319,29 @@ export const OutcomeShowcase = ({ room, user, publish }: RoomScreenProps) => {
                   </motion.div>
                 </motion.div>
               )}
-              <Button
-                variant="contained"
-                color="primary"
+              <motion.div
+                animate={{
+                  opacity: finishedCurrentShowcase ? 1 : 0,
+                }}
+                initial={{
+                  opacity: 0,
+                }}
+                transition={{
+                  duration: 1,
+                  delay: 0.2,
+                }}
+              >
+                <Typography variant="body1" color="primary" textAlign="center">
+                  +{room.currentShowcase.outcome.points || 0} points
+                </Typography>
+              </motion.div>
+              <LeaderButton
                 onClick={goToNextShowcase}
-                disabled={
-                  user.id !== room?.players[0].id || !finishedCurrentShowcase
-                }
+                disabled={!finishedCurrentShowcase}
+                userIsLeader={userIsLeader}
               >
                 Continue
-              </Button>
+              </LeaderButton>
             </div>
           </motion.div>
         </>
