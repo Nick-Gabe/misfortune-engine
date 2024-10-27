@@ -19,6 +19,8 @@ export const OutcomeShowcase = ({ room, user, publish }: RoomScreenProps) => {
 
   useEffect(() => {
     const fetchOutcome = async () => {
+      if (!userBeingShowcased) return;
+
       const data = await mutateAsync([
         {
           role: "system",
@@ -52,30 +54,27 @@ export const OutcomeShowcase = ({ room, user, publish }: RoomScreenProps) => {
         },
         {
           role: "user",
-          content: `My name is ${userBeingShowcased?.name || "player"}. ${
-            userBeingShowcased?.answer || "I did nothing to survive"
+          content: `My name is ${userBeingShowcased.name || "player"}. ${
+            userBeingShowcased.answer || "I did nothing to survive"
           }.`,
         },
       ]);
 
       const json = JSON.parse(data.choices[0].message.content);
+      const userBeingShowcasedWithPoints: User = {
+        ...userBeingShowcased,
+        points: json.points,
+        pointsHistory: [...userBeingShowcased.pointsHistory, json.points],
+      };
 
       setTimeout(() => {
         publish("room:state", {
           ...room,
           players: room?.players.map((p) =>
-            p.id === userBeingShowcased?.id
-              ? {
-                  ...p,
-                  points: json.points,
-                }
-              : p
+            p.id === userBeingShowcased?.id ? userBeingShowcasedWithPoints : p
           ),
           currentShowcase: {
-            user: {
-              ...userBeingShowcased,
-              points: json.points,
-            },
+            user: userBeingShowcasedWithPoints,
             outcome: {
               points: json.points,
               content: json.content,

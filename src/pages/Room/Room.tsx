@@ -11,6 +11,7 @@ import { Leaderboard } from "./Leaderboard/Leaderboard";
 export type RoomScreenProps = {
   user: User;
   room: Room | null;
+  userIsLeader: boolean;
 } & ReturnType<typeof useRealtime>;
 
 type SubscribeCallback<T> = {
@@ -114,7 +115,12 @@ export const RoomWithoutProviders = () => {
 
   return (
     <div>
-      <ScreenComponent {...realtime} user={user!} room={room} />
+      <ScreenComponent
+        {...realtime}
+        user={user!}
+        room={room}
+        userIsLeader={!!(user && room?.players[0].id === user.id)}
+      />
       <div className="absolute">
         <Realtime />
       </div>

@@ -3,11 +3,14 @@ import { GamemodeDescription } from "./GamemodeDescription";
 import { PlayerList } from "./PlayerList";
 import { useState } from "react";
 import { RoomScreenProps } from "../Room";
-import { useLocalStorage } from "../../../shared/useStorage";
+import { LeaderButton } from "../../../components/LeaderContinueButton";
 
-export const WaitingRoom = ({ room, publish }: RoomScreenProps) => {
+export const WaitingRoom = ({
+  room,
+  publish,
+  userIsLeader,
+}: RoomScreenProps) => {
   const [showCopiedLink, setShowCopiedLink] = useState(false);
-  const [user] = useLocalStorage<User | null>("user", null);
 
   const shareRoom = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -21,9 +24,6 @@ export const WaitingRoom = ({ room, publish }: RoomScreenProps) => {
     });
   };
 
-  const userCanStartGame =
-    room && room.players.length > 1 && room.players[0].id === user?.id;
-
   return (
     <main className="flex flex-col gap-10 items-center">
       <div className="grid grid-cols-2 gap-10 px-5">
@@ -34,14 +34,13 @@ export const WaitingRoom = ({ room, publish }: RoomScreenProps) => {
         <Button variant="outlined" color="primary" onClick={shareRoom}>
           Share room
         </Button>
-        <Button
-          variant="contained"
-          className={!userCanStartGame ? `!bg-slate-600` : ""}
-          color="primary"
-          onClick={userCanStartGame ? startGame : undefined}
+        <LeaderButton
+          onClick={startGame}
+          userIsLeader={userIsLeader}
+          disabled={!room || room.players.length < 2}
         >
           Start Game
-        </Button>
+        </LeaderButton>
       </div>
       <Snackbar
         open={showCopiedLink}

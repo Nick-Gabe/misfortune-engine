@@ -3,6 +3,8 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { nanoid } from "nanoid";
 import { useLocalStorage } from "../shared/useStorage";
 
+const maxNameLength = 20;
+
 export const Home = () => {
   const navigate = useNavigate();
   const [user, setUser] = useLocalStorage<User>("user", {
@@ -10,6 +12,7 @@ export const Home = () => {
     name: "",
     answer: null,
     points: 0,
+    pointsHistory: [],
   });
   const [searchParams] = useSearchParams();
   const specificRoom = searchParams.get("room");
@@ -33,7 +36,10 @@ export const Home = () => {
             variant="filled"
             autoComplete="off"
             value={user.name}
-            onChange={(e) => setUser({ ...user, name: e.target.value })}
+            onChange={(e) =>
+              e.target.value.length <= maxNameLength &&
+              setUser({ ...user, name: e.target.value })
+            }
           />
         </div>
       </div>

@@ -3,6 +3,7 @@ type User = {
   id: string;
   answer: string | null;
   points: number;
+  pointsHistory: number[];
 }
 
 type GameMode = "versus" | "coop";
