@@ -23,21 +23,48 @@ export const Leaderboard = ({
     useState(false);
 
   const continueGame = () => {
+    if (!room) {
+      return;
+    }
+
+    const newRoom: Room = {
+      ...room,
+      players: room.players.map((player) => ({
+        ...player,
+        answer: null,
+        pointsHistory: [...player.pointsHistory],
+      })),
+      currentMisfortune: null,
+      currentShowcase: undefined,
+    };
+
     if (
-      room?.players.some(
+      room.players.some(
         (player) => player.pointsHistory.length >= quantityOfMatches
       )
     ) {
       publish("room:state", {
-        ...room,
+        ...newRoom,
         screen: "results",
       });
+      return;
     }
+    publish("room:state", {
+      ...newRoom,
+      screen: "decidingMisfortune",
+    });
   };
 
   return (
     <div className="flex flex-col justify-center items-center gap-4">
-      <Typography variant="h1" color="primary">
+      <Typography
+        variant="h1"
+        color="primary"
+        fontFamily="Handjet, monospace"
+        fontWeight={700}
+        letterSpacing={5}
+        paddingX={10}
+      >
         Leaderboard
       </Typography>
       <div className="flex flex-col gap-4 w-full">
