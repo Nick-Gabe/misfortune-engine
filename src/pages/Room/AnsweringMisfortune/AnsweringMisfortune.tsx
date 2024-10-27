@@ -5,7 +5,11 @@ import { useEffect, useState } from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { Lock } from "@mui/icons-material";
 
-export const MisfortuneDecided = ({ room, publish, user }: RoomScreenProps) => {
+export const AnsweringMisfortune = ({
+  room,
+  publish,
+  user,
+}: RoomScreenProps) => {
   const [announcedMisfortune, setAnnouncedMisfortune] = useState(false);
   const [answer, setAnswer] = useState("");
   const [answered, setAnswered] = useState(false);
@@ -39,9 +43,9 @@ export const MisfortuneDecided = ({ room, publish, user }: RoomScreenProps) => {
     <div className="flex flex-col justify-center items-center gap-4">
       <CountdownCircleTimer
         isPlaying={announcedMisfortune}
-        duration={30}
-        colors={["#fff", "#A30000"]}
-        colorsTime={[30, 5]}
+        duration={60}
+        colors={["#fff", "#fff", "#A30000"]}
+        colorsTime={[60, 10, 0]}
         size={50}
         strokeWidth={4}
         onComplete={sendAnswer}

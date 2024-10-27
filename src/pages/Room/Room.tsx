@@ -4,9 +4,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useBeforeUnload, useLocation, useParams } from "react-router-dom";
 import { useLocalStorage } from "../../shared/useStorage";
 import { DecidingMisfortune } from "./DecidingMisfortune/DecidingMisfortune";
-import { MisfortuneDecided } from "./MisfortuneDecided/MisfortuneDecided";
+import { AnsweringMisfortune } from "./AnsweringMisfortune/AnsweringMisfortune";
 import { OutcomeShowcase } from "./OutcomeShowcase/OutcomeShowcase";
 import { Leaderboard } from "./Leaderboard/Leaderboard";
+import { Results } from "./Results/Results";
 
 export type RoomScreenProps = {
   user: User;
@@ -56,7 +57,7 @@ export const RoomWithoutProviders = () => {
         setRoom(payload.data);
         if (payload.data.players[0].id === user.id) {
           if (
-            payload.data.screen === "misfortuneDecided" &&
+            payload.data.screen === "answeringMisfortune" &&
             payload.data.players.every((p) => p.answer)
           ) {
             realtime.publish("room:state", {
@@ -106,9 +107,10 @@ export const RoomWithoutProviders = () => {
   const screens: Record<RoomScreen, (props: RoomScreenProps) => JSX.Element> = {
     waitingRoom: WaitingRoom,
     decidingMisfortune: DecidingMisfortune,
-    misfortuneDecided: MisfortuneDecided,
+    answeringMisfortune: AnsweringMisfortune,
     outcomeShowcase: OutcomeShowcase,
     leaderboard: Leaderboard,
+    results: Results,
   };
 
   const ScreenComponent = screens[room?.screen || "waitingRoom"];
@@ -117,7 +119,7 @@ export const RoomWithoutProviders = () => {
     <div>
       <ScreenComponent
         {...realtime}
-        user={user!}
+        user={room?.players.find((p) => p.id === user?.id) || user!}
         room={room}
         userIsLeader={!!(user && room?.players[0].id === user.id)}
       />
