@@ -32,7 +32,6 @@ export const Leaderboard = ({
       players: room.players.map((player) => ({
         ...player,
         answer: null,
-        pointsHistory: [...player.pointsHistory],
       })),
       currentMisfortune: null,
       currentShowcase: undefined,

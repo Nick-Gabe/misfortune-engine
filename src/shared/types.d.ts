@@ -25,7 +25,7 @@ type Room = {
       points: number;
       content: string;
     } | null
-  };
+  } | null;
 }
 
 type OpenAIResponse = {

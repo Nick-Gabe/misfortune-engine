@@ -30,7 +30,7 @@ export const useAiQuery = ({
         body: JSON.stringify({
           model: "gpt-4o",
           messages: messages,
-          temperature: 0.8,
+          temperature: 1,
         }),
       })
     ).json(),
@@ -51,7 +51,7 @@ export const useAiMutation = () => useMutation({
         body: JSON.stringify({
           model: "gpt-4o",
           messages: messages,
-          temperature: 0.8,
+          temperature: 1,
         }),
       })
     ).json(),
