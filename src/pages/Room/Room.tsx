@@ -158,7 +158,6 @@ export const RoomWithoutProviders = () => {
       </div>
       <VideoConference
         participantType="host"
-        chatOff
         enableRecording={false}
         skipMeetingSettings
         allowGuests
