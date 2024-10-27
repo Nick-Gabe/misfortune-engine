@@ -25,7 +25,7 @@ export const Home = () => {
   };
 
   return (
-    <main className="flex flex-col gap-3">
+    <main className="h-full w-full flex flex-col items-center justify-center gap-3">
       <AnimatedBackground
         animationName="matrixRain"
         style={{

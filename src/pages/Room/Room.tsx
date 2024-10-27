@@ -3,6 +3,7 @@ import {
   useRealtime,
   useSuperviz,
   WhoIsOnline,
+  VideoConference,
 } from "@superviz/react-sdk";
 import { WaitingRoom } from "./WaitingRoom/WaitingRoom";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -41,7 +42,9 @@ export const RoomWithoutProviders = () => {
     players: user ? [user] : [],
     gameMode: location.state?.gameMode || "versus",
   });
+  const [videoMounted, setVideoMounted] = useState(false);
   const roomRef = useRef(room);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     roomRef.current = room;
@@ -128,8 +131,31 @@ export const RoomWithoutProviders = () => {
     "outcomeShowcase",
   ];
 
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || !videoMounted) {
+      return;
+    }
+
+    const observer = new ResizeObserver((entries) => {
+      const { height } = entries[0].contentRect;
+      container.style.maxHeight = `calc(100% - ${height}px)`;
+    });
+    const videoFrame = document.getElementById("sv-video-frame");
+    observer.observe(videoFrame!);
+    return () => {
+      observer.disconnect();
+    };
+  }, [videoMounted]);
+
   return (
-    <div>
+    <div
+      className="h-full w-full flex flex-col justify-center items-center"
+      style={{
+        transition: "max-height 0.3s ease",
+      }}
+      ref={containerRef}
+    >
       <ScreenComponent
         {...realtime}
         user={room?.players.find((p) => p.id === user?.id) || user!}
@@ -141,7 +167,7 @@ export const RoomWithoutProviders = () => {
       </div>
       <motion.div
         animate={{
-          bottom:
+          top:
             room && roomsThatIncludeWhoIsOnline.includes(room.screen)
               ? 16
               : -50,
@@ -150,6 +176,20 @@ export const RoomWithoutProviders = () => {
         id="online"
       />
       <WhoIsOnline position="online" disableFollowMe />
+      <VideoConference
+        participantType="host"
+        chatOff
+        enableRecording={false}
+        skipMeetingSettings
+        allowGuests
+        screenshareOff
+        onMount={() => setVideoMounted(true)}
+        onMeetingStart={() => setVideoMounted(true)}
+        collaborationMode={{
+          enabled: true,
+          position: "bottom",
+        }}
+      />
     </div>
   );
 };

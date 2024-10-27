@@ -5,10 +5,10 @@
 body, #root {
   height: 100vh;
   height: 100dvh;
-  display: grid;
-  place-items: center;
 }
 
 body {
+  display: grid;
+  place-items: center;
   @apply bg-slate-800;
 }
