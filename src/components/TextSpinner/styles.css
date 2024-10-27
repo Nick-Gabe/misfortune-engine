@@ -1,0 +1,12 @@
+.circle {
+  position: relative;
+  aspect-ratio: 1;
+}
+
+.letter {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  font-family: "Creepster", sans-serif;
+  @apply text-yellow-500;
+}

@@ -11,8 +11,6 @@ type PlayerListProps = {
 export const PlayerList = (props: PlayerListProps) => {
   const [user] = useLocalStorage<User | null>("user", null);
 
-  console.log("👽", props.players);
-
   return (
     <div className="flex flex-col gap-2">
       <Typography variant="h3" fontWeight="bold" color="primary">

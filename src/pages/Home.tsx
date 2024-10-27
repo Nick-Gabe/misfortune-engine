@@ -8,6 +8,8 @@ export const Home = () => {
   const [user, setUser] = useLocalStorage<User>("user", {
     id: nanoid(8),
     name: "",
+    answer: null,
+    points: 0,
   });
   const [searchParams] = useSearchParams();
   const specificRoom = searchParams.get("room");
@@ -19,7 +21,7 @@ export const Home = () => {
 
   return (
     <main className="flex flex-col gap-3">
-      <Typography variant="h1" color="primary">
+      <Typography variant="h1" color="primary" textAlign="center">
         Misfortune Engine
       </Typography>
       <div className="flex flex-col items-center justify-center mb-6">
