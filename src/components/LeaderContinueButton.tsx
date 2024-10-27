@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { ReactNode } from "react";
 
 type LeaderButtonProps = {
@@ -15,15 +15,27 @@ export const LeaderButton = ({
   children = "Continue",
 }: LeaderButtonProps) => {
   return (
-    <Button
-      variant="contained"
-      disabled={disabled || !userIsLeader}
-      onClick={() => {
-        if (!userIsLeader) return;
-        onClick();
-      }}
-    >
-      {children}
-    </Button>
+    <div className="flex flex-col justify-center items-center">
+      <Button
+        variant="contained"
+        disabled={disabled || !userIsLeader}
+        onClick={() => {
+          if (!userIsLeader) return;
+          onClick();
+        }}
+      >
+        {children}
+      </Button>
+      {!userIsLeader && !disabled && (
+        <Typography
+          variant="body1"
+          fontSize={12}
+          className="animate-pulse"
+          color="primary"
+        >
+          Waiting room leader...
+        </Typography>
+      )}
+    </div>
   );
 };
