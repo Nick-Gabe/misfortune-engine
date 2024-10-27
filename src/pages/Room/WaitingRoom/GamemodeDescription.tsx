@@ -1,4 +1,5 @@
 import { Typography } from "@mui/material";
+import { Crown } from "@phosphor-icons/react";
 
 type GamemodeDescriptionProps = {
   gamemode: "coop" | "versus";
@@ -32,6 +33,18 @@ export const GamemodeDescription = (props: GamemodeDescriptionProps) => {
         color="textPrimary"
       >
         {gamemodeInfo[props.gamemode].description}
+      </Typography>
+      <Typography variant="body1" maxWidth="50ch" color="primary">
+        Only the room leader (
+        <Crown
+          weight="fill"
+          size={20}
+          className="text-yellow-400 inline-block"
+          stroke="black"
+          strokeWidth={10}
+        />
+        ) can start the game and continue to the next round. You need at least 2
+        players for this mode.
       </Typography>
     </div>
   );

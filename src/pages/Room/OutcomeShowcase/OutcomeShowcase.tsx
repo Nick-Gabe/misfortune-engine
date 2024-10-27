@@ -5,6 +5,7 @@ import { Button, Typography } from "@mui/material";
 import { useAiMutation } from "../../../shared/useAi";
 import { TextSpinner } from "../../../components/TextSpinner/TextSpinner";
 import { Confetti, CrownSimple, Skull } from "@phosphor-icons/react";
+import { AnimatedBackground } from "animated-backgrounds";
 
 export const OutcomeShowcase = ({ room, user, publish }: RoomScreenProps) => {
   const { mutateAsync } = useAiMutation();
@@ -51,9 +52,9 @@ export const OutcomeShowcase = ({ room, user, publish }: RoomScreenProps) => {
         },
         {
           role: "user",
-          content: `My name is ${
-            userBeingShowcased?.name || "player, don't mention it"
-          }. ${userBeingShowcased?.answer || "I did nothing to survive"}.`,
+          content: `My name is ${userBeingShowcased?.name || "player"}. ${
+            userBeingShowcased?.answer || "I did nothing to survive"
+          }.`,
         },
       ]);
 
@@ -81,7 +82,7 @@ export const OutcomeShowcase = ({ room, user, publish }: RoomScreenProps) => {
             },
           },
         });
-      }, 2000);
+      }, 4500);
     };
 
     if (
@@ -122,45 +123,52 @@ export const OutcomeShowcase = ({ room, user, publish }: RoomScreenProps) => {
 
   return (
     <div className="flex flex-col items-center justify-center relative">
+      <AnimatedBackground
+        animationName="auroraBorealis"
+        style={{
+          opacity: 0.2,
+        }}
+      />
       {!room?.currentShowcase?.outcome ? (
         <>
-          <motion.div
-            animate={{ opacity: 1, translateY: 0 }}
-            initial={{ opacity: 0, translateY: 50 }}
-            transition={{
-              duration: 0.5,
-              bounce: 40,
-              delay: 1,
-            }}
-          >
-            <Typography
-              variant="body1"
-              color="white"
-              textAlign="center"
-              fontSize={20}
+          <div className="fixed z-[10]">
+            <motion.div
+              animate={{ opacity: 1, translateY: 0 }}
+              initial={{ opacity: 0, translateY: 50 }}
+              transition={{
+                duration: 0.5,
+                bounce: 40,
+                delay: 1,
+              }}
             >
-              All choices were made...
-            </Typography>
-          </motion.div>
-          <motion.div
-            animate={{ opacity: 1, translateY: 0 }}
-            initial={{ opacity: 0, translateY: 50 }}
-            transition={{
-              duration: 0.5,
-              bounce: 40,
-              delay: 3,
-            }}
-            className="!bg-slate-800"
-          >
-            <Typography
-              variant="body1"
-              color="white"
-              textAlign="center"
-              fontSize={20}
+              <Typography
+                variant="body1"
+                color="white"
+                textAlign="center"
+                fontSize={20}
+              >
+                All choices were made...
+              </Typography>
+            </motion.div>
+            <motion.div
+              animate={{ opacity: 1, translateY: 0 }}
+              initial={{ opacity: 0, translateY: 50 }}
+              transition={{
+                duration: 0.5,
+                bounce: 40,
+                delay: 3,
+              }}
             >
-              Now witness the consequences
-            </Typography>
-          </motion.div>
+              <Typography
+                variant="body1"
+                color="white"
+                textAlign="center"
+                fontSize={20}
+              >
+                Now witness the consequences
+              </Typography>
+            </motion.div>
+          </div>
           <motion.div
             key="loading-spinner2"
             className="spinner spinner-2 fixed"
@@ -273,22 +281,30 @@ export const OutcomeShowcase = ({ room, user, publish }: RoomScreenProps) => {
               {finishedCurrentShowcase && (
                 <motion.div
                   className="absolute right-5 top-5"
-                  animate={{
-                    scale: [1, 1.1, 1],
-                    rotate: [10, -10, 10],
-                  }}
-                  transition={{
-                    duration: 1,
-                    repeat: Infinity,
-                  }}
+                  initial={{ opacity: 0, scale: 10 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  {!userBeingShowcased?.points ? (
-                    <Skull weight="duotone" size={62} />
-                  ) : userBeingShowcased?.points > 7 ? (
-                    <Confetti weight="duotone" size={62} />
-                  ) : (
-                    <CrownSimple weight="duotone" size={62} />
-                  )}
+                  <motion.div
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      rotate: [10, -10, 10],
+                      opacity: [1, 1, 1],
+                    }}
+                    transition={{
+                      duration: 1,
+                      repeat: Infinity,
+                      delay: 0.2,
+                    }}
+                  >
+                    {!userBeingShowcased?.points ? (
+                      <Skull weight="duotone" size={62} />
+                    ) : userBeingShowcased?.points > 7 ? (
+                      <Confetti weight="duotone" size={62} />
+                    ) : (
+                      <CrownSimple weight="duotone" size={62} />
+                    )}
+                  </motion.div>
                 </motion.div>
               )}
               <Button

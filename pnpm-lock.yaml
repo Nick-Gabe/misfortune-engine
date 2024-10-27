@@ -29,6 +29,9 @@ dependencies:
   '@superviz/sdk':
     specifier: ^6.7.2
     version: 6.7.2
+  animated-backgrounds:
+    specifier: ^1.0.11
+    version: 1.0.11(react-dom@18.3.1)(react@18.3.1)
   nanoid:
     specifier: ^5.0.7
     version: 5.0.7
@@ -1688,6 +1691,17 @@ packages:
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
     dev: true
+
+  /animated-backgrounds@1.0.11(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-M7sGVL3Yzrl6za788B6xM/a8w+cVZOAxPa8uEMWBUqRsb3ZpDwP3YqEu0aTIf7Dik54sMnlwGgZSj6pa/0yC9Q==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+    dev: false
 
   /ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}

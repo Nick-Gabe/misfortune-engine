@@ -2,10 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-#root, body {
-  min-height: 100vh;
-  min-height: 100dvh;
+body, #root {
+  height: 100vh;
+  height: 100dvh;
   display: grid;
   place-items: center;
-  @apply bg-slate-800
+}
+
+body {
+  @apply bg-slate-800;
 }

@@ -36,3 +36,5 @@ type OpenAIResponse = {
     };
   }[];
 }
+
+declare module 'animated-backgrounds'

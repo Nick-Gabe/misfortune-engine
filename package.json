@@ -18,6 +18,7 @@
     "@phosphor-icons/react": "^2.1.7",
     "@superviz/react-sdk": "^1.14.2",
     "@superviz/sdk": "^6.7.2",
+    "animated-backgrounds": "^1.0.11",
     "nanoid": "^5.0.7",
     "openai": "^4.68.4",
     "react": "^18.3.1",
