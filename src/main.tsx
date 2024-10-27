@@ -3,6 +3,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Pages } from "./pages";
 import { createTheme, ThemeProvider } from "@mui/material";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const theme = createTheme({
   palette: {
@@ -26,10 +27,14 @@ const theme = createTheme({
   },
 });
 
+const queryClient = new QueryClient();
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ThemeProvider theme={theme}>
-      <Pages />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <Pages />
+      </ThemeProvider>
+    </QueryClientProvider>
   </StrictMode>
 );
