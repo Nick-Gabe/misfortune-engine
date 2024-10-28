@@ -50,7 +50,7 @@ export const AnsweringMisfortune = ({
         colorsTime={[60, 10, 0]}
         size={50}
         strokeWidth={4}
-        // onComplete={sendAnswer}
+        onComplete={sendAnswer}
       >
         {({ remainingTime }) => (
           <span className="text-slate-50">{remainingTime}</span>

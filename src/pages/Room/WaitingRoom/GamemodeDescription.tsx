@@ -17,7 +17,7 @@ export const GamemodeDescription = (props: GamemodeDescriptionProps) => {
         
       The AI will then decide if you survive or not, based on your explanation. Try to be the smartest person in the room and survive the most!
       
-      After 5 rounds, the player with the most survival points wins the game and becomes the Infortunate Master!`,
+      After 5 rounds, the player with the most survival points wins the game and becomes the Misfortune Master!`,
     },
   };
 
