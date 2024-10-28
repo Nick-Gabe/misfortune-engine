@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sitemap": "node ./scripts/generate-sitemap.js"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
@@ -24,7 +25,8 @@
     "react": "^18.3.1",
     "react-countdown-circle-timer": "^3.2.1",
     "react-dom": "^18.3.1",
-    "react-query": "^3.39.3"
+    "react-query": "^3.39.3",
+    "sitemap": "^8.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
