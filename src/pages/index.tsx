@@ -1,10 +1,4 @@
-import {
-  BrowserRouter,
-  Link,
-  Route,
-  Routes,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Home } from "./Home";
 import { Room } from "./Room";
 import { IconButton, Tooltip } from "@mui/material";
@@ -33,9 +27,9 @@ const ExitRoomButton = () => {
     <div className="fixed top-5 right-5">
       <Tooltip title="Exit room">
         <IconButton color="primary">
-          <Link to="/">
+          <a href="/">
             <ExitToApp fontSize="large" />
-          </Link>
+          </a>
         </IconButton>
       </Tooltip>
     </div>
