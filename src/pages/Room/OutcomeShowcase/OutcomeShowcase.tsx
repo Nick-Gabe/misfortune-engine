@@ -166,7 +166,11 @@ export const OutcomeShowcase = ({
   };
 
   return (
-    <div className="flex px-6 pb-24 md:pb-0 md:px-0 flex-col items-center justify-center relative">
+    <div
+      className={`flex px-6 ${
+        room?.currentShowcase?.outcome ? "pb-24" : ""
+      } md:pb-0 md:px-0 flex-col items-center justify-center relative`}
+    >
       <AnimatedBackground
         animationName="auroraBorealis"
         style={{
@@ -174,7 +178,7 @@ export const OutcomeShowcase = ({
         }}
       />
       {!room?.currentShowcase?.outcome ? (
-        <div className="h-[calc(90vh-100px)] md:h-full flex items-center justify-center w-full">
+        <div className="h-90-dvh md:h-full flex items-center justify-center w-full">
           <div className="fixed z-[10]">
             <motion.div
               animate={{ opacity: 1, translateY: 0 }}

@@ -23,7 +23,7 @@ export const Results = ({ room, publish, userIsLeader }: RoomScreenProps) => {
   };
 
   return (
-    <div className="flex flex-col w-full overflow-hidden h-[90vh] md:h-full justify-center items-center">
+    <div className="flex flex-col w-full overflow-hidden h-90-dvh md:h-full justify-center items-center">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

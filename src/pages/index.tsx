@@ -34,7 +34,7 @@ const StaticButtons = () => {
   };
 
   return (
-    <div className="flex w-full h-[10vh] justify-between p-5 md:fixed top-0 right-0">
+    <div className="flex w-full h-10-dvh justify-between p-5 md:fixed top-0 right-0">
       <div className="flex">
         <label htmlFor="language" className="w-0 h-0 invisible">
           {t("language")}

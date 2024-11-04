@@ -143,7 +143,7 @@ export const RoomWithoutProviders = () => {
 
   return (
     <div
-      className="h-[90vh] w-full flex flex-col md:justify-center items-center"
+      className="h-90-dvh w-full flex flex-col md:justify-center items-center"
       style={{
         transition: "max-height 0.3s ease",
       }}

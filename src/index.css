@@ -14,3 +14,12 @@ body {
   place-items: center;
   @apply bg-slate-800;
 }
+
+.h-90-dvh {
+  height: 90vh;
+  height: 90dvh;
+}
+.h-10-dvh {
+  height: 10vh;
+  height: 10dvh;
+}
