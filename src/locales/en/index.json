@@ -57,6 +57,13 @@
       "witnessConsequences": "Now witness the consequences",
       "misfortuneWas": "The misfortune was:",
       "outcomeWas": "And the outcome was..."
+    },
+    "results": {
+      "afterAllChallenges": "After all the challenges",
+      "onePersonEmerged": "one person emerged victorious",
+      "andItWas": "and it was...",
+      "withPoints": "with {{value}} points",
+      "isTheMisfortuneMaster": "Is the Misfortune Master!"
     }
   }
 }

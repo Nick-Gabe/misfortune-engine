@@ -57,6 +57,13 @@
       "witnessConsequences": "Agora testemunhe as consequências",
       "misfortuneWas": "A desventura foi:",
       "outcomeWas": "E o resultado foi..."
+    },
+    "results": {
+      "afterAllChallenges": "Após todos os desafios",
+      "onePersonEmerged": "uma pessoa emergiu vitoriosa",
+      "andItWas": "e foi...",
+      "withPoints": "com {{value}} pontos",
+      "isTheMisfortuneMaster": "É o Mestre das Desventuras!"
     }
   }
 }

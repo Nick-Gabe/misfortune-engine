@@ -5,8 +5,10 @@ import { Typography } from "@mui/material";
 import { useMemo, useState } from "react";
 import { CrownSimple } from "@phosphor-icons/react";
 import { LeaderButton } from "../../../components/LeaderContinueButton";
+import { useTranslation } from "react-i18next";
 
 export const Results = ({ room, publish, userIsLeader }: RoomScreenProps) => {
+  const { t } = useTranslation();
   const [animationStep, setAnimationStep] = useState(0);
   const initialPlayers = useMemo(() => room?.players, []);
   const winnerPlayer = initialPlayers?.reduce((prev, current) =>
@@ -46,7 +48,7 @@ export const Results = ({ room, publish, userIsLeader }: RoomScreenProps) => {
                 transition={{ duration: 1 }}
               >
                 <Typography variant="h1" color="primary" fontSize={35}>
-                  After all the challenges
+                  {t("pages.results.afterAllChallenges")}
                 </Typography>
               </motion.div>
               <motion.div
@@ -57,7 +59,7 @@ export const Results = ({ room, publish, userIsLeader }: RoomScreenProps) => {
                 transition={{ duration: 1, delay: 1.5 }}
               >
                 <Typography variant="h1" color="primary" fontSize={35}>
-                  one person emerged victorious
+                  {t("pages.results.onePersonEmerged")}
                 </Typography>
               </motion.div>
               <motion.div
@@ -69,7 +71,7 @@ export const Results = ({ room, publish, userIsLeader }: RoomScreenProps) => {
                 onAnimationComplete={() => setAnimationStep(1)}
               >
                 <Typography variant="h1" color="primary" fontSize={35}>
-                  and it was...
+                  {t("pages.results.andItWas")}
                 </Typography>
               </motion.div>
             </>
@@ -128,7 +130,9 @@ export const Results = ({ room, publish, userIsLeader }: RoomScreenProps) => {
             fontSize={20}
             fontWeight="bold"
           >
-            with {winnerPlayer?.points} points
+            {t("pages.results.withPoints", {
+              value: winnerPlayer?.points,
+            })}
           </Typography>
         </motion.div>
         <motion.div
@@ -186,7 +190,7 @@ export const Results = ({ room, publish, userIsLeader }: RoomScreenProps) => {
           fontWeight={700}
           letterSpacing={3}
         >
-          Is the Misfortune Master!
+          {t("pages.results.isTheMisfortuneMaster")}
         </Typography>
       </motion.div>
       {animationStep === 4 && (
