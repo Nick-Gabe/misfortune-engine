@@ -80,14 +80,16 @@ export const RoomWithoutProviders = () => {
           return;
         }
         if (room?.players[0].id === user.id) {
-          // Sometimes the user refreshed the page but didn't leave the room state,
-          // so we filter it out and re-add it.
-          const playersWithoutUser = room.players.filter(
-            (p) => p.id !== payload.data.id
+          // Sometimes the user refreshed the page, so instead of adding a new player,
+          // we just maintain the existing one and publish the state so the user syncs.
+          const userIsAlreadyInRoom = room.players.some(
+            (p) => p.id === payload.data.id
           );
           realtime.publish("room:state", {
             ...room,
-            players: [...playersWithoutUser, payload.data],
+            players: userIsAlreadyInRoom
+              ? room.players
+              : [...room.players, payload.data],
           });
         }
       });
