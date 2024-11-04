@@ -14,6 +14,7 @@
       "shareRoomListButton": "Share the room to invite more players",
       "startGame": "Start game",
       "leaderExplanation": "Only the room leader (<0></0>) can start the game and continue rounds. You need at least 2 players to start.",
+      "roomLinkCopied": "Room link copied to clipboard",
       "modes": {
         "versus": {
           "title": "Versus mode",

@@ -4,12 +4,14 @@ import { PlayerList } from "./PlayerList";
 import { useState } from "react";
 import { RoomScreenProps } from "../Room";
 import { LeaderButton } from "../../../components/LeaderContinueButton";
+import { useTranslation } from "react-i18next";
 
 export const WaitingRoom = ({
   room,
   publish,
   userIsLeader,
 }: RoomScreenProps) => {
+  const { t } = useTranslation();
   const [showCopiedLink, setShowCopiedLink] = useState(false);
 
   const shareRoom = () => {
@@ -32,19 +34,19 @@ export const WaitingRoom = ({
       </div>
       <div className="flex gap-5">
         <Button variant="outlined" color="primary" onClick={shareRoom}>
-          Share room
+          {t("pages.room.shareRoomButton")}
         </Button>
         <LeaderButton
           onClick={startGame}
           userIsLeader={userIsLeader}
           disabled={!room || room.players.length < 2}
         >
-          Start Game
+          {t("pages.room.startGame")}
         </LeaderButton>
       </div>
       <Snackbar
         open={showCopiedLink}
-        message="Room link copied to clipboard"
+        message={t("pages.room.roomLinkCopied")}
         autoHideDuration={3000}
         onClose={(_, reason) => {
           if (reason === "clickaway") return;

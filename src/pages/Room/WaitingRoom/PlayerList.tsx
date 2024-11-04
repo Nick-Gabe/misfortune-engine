@@ -2,6 +2,7 @@ import { Typography } from "@mui/material";
 import { useLocalStorage } from "../../../shared/useStorage";
 import { motion, AnimatePresence } from "framer-motion";
 import { Crown } from "@phosphor-icons/react";
+import { useTranslation } from "react-i18next";
 
 type PlayerListProps = {
   players: User[];
@@ -9,12 +10,13 @@ type PlayerListProps = {
 };
 
 export const PlayerList = (props: PlayerListProps) => {
+  const { t } = useTranslation();
   const [user] = useLocalStorage<User | null>("user", null);
 
   return (
     <div className="flex flex-col gap-2">
       <Typography variant="h3" fontWeight="bold" color="primary">
-        Players
+        {t("common.players")}
       </Typography>
 
       <AnimatePresence>
@@ -51,7 +53,7 @@ export const PlayerList = (props: PlayerListProps) => {
         onClick={props.onCopyLink}
       >
         <Typography variant="body1">
-          Share the room to invite more players
+          {t("pages.room.shareRoomListButton")}
         </Typography>
       </button>
     </div>

@@ -1,23 +1,21 @@
 import { Typography } from "@mui/material";
 import { Crown } from "@phosphor-icons/react";
+import { Trans, useTranslation } from "react-i18next";
 
 type GamemodeDescriptionProps = {
   gamemode: "coop" | "versus";
 };
 
 export const GamemodeDescription = (props: GamemodeDescriptionProps) => {
+  const { t } = useTranslation();
   const gamemodeInfo = {
     coop: {
-      title: "Cooperative Mode",
-      description: "Work together to solve the puzzle.",
+      title: t("pages.room.modes.coop.title"),
+      description: t("pages.room.modes.coop.description"),
     },
     versus: {
-      title: "Versus Mode",
-      description: `Each round, a misfortune is chosen by the AI, and your objetive is to find a way to survive it using your own words and knowledge.
-        
-      The AI will then decide if you survive or not, based on your explanation. Try to be the smartest person in the room and survive the most!
-      
-      After 5 rounds, the player with the most survival points wins the game and becomes the Misfortune Master!`,
+      title: t("pages.room.modes.versus.title"),
+      description: t("pages.room.modes.versus.description"),
     },
   };
 
@@ -35,16 +33,15 @@ export const GamemodeDescription = (props: GamemodeDescriptionProps) => {
         {gamemodeInfo[props.gamemode].description}
       </Typography>
       <Typography variant="body1" maxWidth="50ch" color="primary">
-        Only the room leader (
-        <Crown
-          weight="fill"
-          size={20}
-          className="text-yellow-400 inline-block"
-          stroke="black"
-          strokeWidth={10}
-        />
-        ) can start the game and continue rounds. You need at least 2 players
-        for this mode.
+        <Trans i18nKey="pages.room.leaderExplanation">
+          <Crown
+            weight="fill"
+            size={20}
+            className="text-yellow-400 inline-block"
+            stroke="black"
+            strokeWidth={10}
+          />
+        </Trans>
       </Typography>
     </div>
   );
