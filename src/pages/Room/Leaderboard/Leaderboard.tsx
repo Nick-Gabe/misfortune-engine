@@ -68,7 +68,7 @@ export const Leaderboard = ({
       >
         {t("common.leaderboard")}
       </Typography>
-      <div className="flex flex-col gap-4 w-full">
+      <div className="flex flex-col gap-4 w-[90vw] max-w-[600px]">
         {[...(room?.players ?? [])]
           .sort((a, b) => b.points - a.points)
           .map((player, playerIndex, src) => {

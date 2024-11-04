@@ -10,7 +10,8 @@
     "continue": "Continue",
     "points": "points",
     "leaderboard": "Leaderboard",
-    "waitingRoomLeader": "Waiting room leader..."
+    "waitingRoomLeader": "Waiting room leader...",
+    "exitRoom": "Exit room"
   },
   "pages": {
     "home": {

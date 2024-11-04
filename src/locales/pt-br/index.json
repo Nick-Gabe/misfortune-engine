@@ -9,8 +9,9 @@
     "tried": "tentou",
     "continue": "Continuar",
     "points": "pontos",
-    "leaderboard": "Placar de Resultados",
-    "waitingRoomLeader": "Esperando líder da sala..."
+    "leaderboard": "Placar",
+    "waitingRoomLeader": "Esperando líder da sala...",
+    "exitRoom": "Sair da sala"
   },
   "pages": {
     "home": {
@@ -26,7 +27,7 @@
       "modes": {
         "versus": {
           "title": "Modo Versus",
-          "description": "A cada rodada, uma desventura é escolhida pela IA, e seu objetivo é encontrar uma forma de sobreviver usando suas próprias palavras e conhecimentos.\n\nA IA então decidirá se você sobrevive ou não, com base em sua explicação. Tente ser a pessoa mais esperta na sala e sobreviver o máximo possível!\n\nApós 5 rodadas, o jogador com mais pontos de sobrevivência vence o jogo e se torna o Mestre das Desventuras!"
+          "description": "A cada rodada, um infortúnio é escolhido pela IA, e seu objetivo é encontrar uma forma de sobreviver usando suas próprias palavras e conhecimentos.\n\nA IA então decidirá se você sobrevive ou não, com base em sua explicação. Tente ser a pessoa mais esperta na sala e sobreviver o máximo possível!\n\nApós 5 rodadas, o jogador com mais pontos de sobrevivência vence o jogo e se torna o Mestre do Infortúnio!"
         },
         "coop": {
           "title": "Modo Co-op",
@@ -55,7 +56,7 @@
       "didNothing": "Eu não fiz nada para sobreviver",
       "allChoicesWereMade": "Todas as escolhas foram feitas...",
       "witnessConsequences": "Agora testemunhe as consequências",
-      "misfortuneWas": "A desventura foi:",
+      "misfortuneWas": "O infortúnio foi:",
       "outcomeWas": "E o resultado foi..."
     },
     "results": {
@@ -63,7 +64,7 @@
       "onePersonEmerged": "uma pessoa emergiu vitoriosa",
       "andItWas": "e foi...",
       "withPoints": "com {{value}} pontos",
-      "isTheMisfortuneMaster": "É o Mestre das Desventuras!"
+      "isTheMisfortuneMaster": "É o Mestre do Infortúnio!"
     }
   }
 }

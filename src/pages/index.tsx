@@ -21,21 +21,19 @@ const StaticButtons = () => {
   const location = useLocation();
   const { i18n, t } = useTranslation();
 
-  if (location.pathname === "/") {
-    return null;
-  }
-
   return (
     <>
-      <div className="fixed top-5 right-5">
-        <Tooltip title="Exit room">
-          <IconButton color="primary">
-            <a href="/">
-              <ExitToApp fontSize="large" />
-            </a>
-          </IconButton>
-        </Tooltip>
-      </div>
+      {location.pathname !== "/" && (
+        <div className="fixed top-5 right-5">
+          <Tooltip title={t("common.exitRoom")}>
+            <IconButton color="primary">
+              <a href="/">
+                <ExitToApp fontSize="large" />
+              </a>
+            </IconButton>
+          </Tooltip>
+        </div>
+      )}
       <div className="flex fixed left-5 top-5">
         <label htmlFor="language" className="w-0 h-0 invisible">
           {t("language")}
