@@ -1,0 +1,29 @@
+{
+  "common": {
+    "gamemodes": "Gamemodes",
+    "versus": "Versus",
+    "players": "Players"
+  },
+  "pages": {
+    "home": {
+      "nameLabel": "How should I call you?",
+      "joinRoom": "Join room"
+    },
+    "room": {
+      "shareRoomButton": "Share room",
+      "shareRoomListButton": "Share the room to invite more players",
+      "startGame": "Start game",
+      "leaderExplanation": "Only the room leader (<0></0>) can start the game and continue rounds. You need at least 2 players to start.",
+      "modes": {
+        "versus": {
+          "title": "Versus mode",
+          "description": "Each round, a misfortune is chosen by the AI, and your objetive is to find a way to survive it using your own words and knowledge.\n\nThe AI will then decide if you survive or not, based on your explanation. Try to be the smartest person in the room and survive the most!\n\nAfter 5 rounds, the player with the most survival points wins the game and becomes the Misfortune Master!"
+        },
+        "coop": {
+          "title": "Co-op mode",
+          "description": "Work together to solve the puzzle."
+        }
+      }
+    }
+  }
+}

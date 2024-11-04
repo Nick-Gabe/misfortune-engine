@@ -4,6 +4,8 @@ import { createRoot } from "react-dom/client";
 import { Pages } from "./pages";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { QueryClient, QueryClientProvider } from "react-query";
+import i18n from "./i18n";
+import { I18nextProvider } from "react-i18next";
 
 const theme = createTheme({
   palette: {
@@ -33,7 +35,9 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
-        <Pages />
+        <I18nextProvider i18n={i18n}>
+          <Pages />
+        </I18nextProvider>
       </ThemeProvider>
     </QueryClientProvider>
   </StrictMode>

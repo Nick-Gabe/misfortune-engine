@@ -1,0 +1,29 @@
+{
+  "common": {
+    "gamemodes": "Modos de jogo",
+    "versus": "Versus",
+    "players": "Jogadores"
+  },
+  "pages": {
+    "home": {
+      "nameLabel": "Como devo te chamar?",
+      "joinRoom": "Entrar na sala"
+    },
+    "room": {
+      "shareRoomButton": "Compartilhar sala",
+      "shareRoomListButton": "Compartilhe a sala para convidar mais jogadores",
+      "startGame": "Iniciar jogo",
+      "leaderExplanation": "Apenas o líder da sala (<0></0>) pode iniciar o jogo e continuar as rodadas. Você precisa de pelo menos 2 jogadores para começar.",
+      "modes": {
+        "versus": {
+          "title": "Modo Versus",
+          "description": "A cada rodada, uma desventura é escolhida pela IA, e seu objetivo é encontrar uma forma de sobreviver usando suas próprias palavras e conhecimentos.\n\nA IA então decidirá se você sobrevive ou não, com base em sua explicação. Tente ser a pessoa mais esperta na sala e sobreviver o máximo possível!\n\nApós 5 rodadas, o jogador com mais pontos de sobrevivência vence o jogo e se torna o Mestre das Desventuras!"
+        },
+        "coop": {
+          "title": "Modo Co-op",
+          "description": "Trabalhem juntos para resolver o enigma."
+        }
+      }
+    }
+  }
+}
