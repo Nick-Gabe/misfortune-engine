@@ -8,7 +8,9 @@
     "player": "Player",
     "tried": "tried",
     "continue": "Continue",
-    "points": "points"
+    "points": "points",
+    "leaderboard": "Leaderboard",
+    "waitingRoomLeader": "Waiting room leader..."
   },
   "pages": {
     "home": {

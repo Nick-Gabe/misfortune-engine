@@ -8,7 +8,9 @@
     "player": "Jogador",
     "tried": "tentou",
     "continue": "Continuar",
-    "points": "pontos"
+    "points": "pontos",
+    "leaderboard": "Placar de Resultados",
+    "waitingRoomLeader": "Esperando líder da sala..."
   },
   "pages": {
     "home": {

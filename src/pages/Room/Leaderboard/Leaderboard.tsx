@@ -10,6 +10,7 @@ import {
 } from "@phosphor-icons/react";
 import { useState } from "react";
 import { LeaderButton } from "../../../components/LeaderContinueButton";
+import { useTranslation } from "react-i18next";
 
 const quantityOfMatches = 5;
 
@@ -19,6 +20,7 @@ export const Leaderboard = ({
   userIsLeader,
   publish,
 }: RoomScreenProps) => {
+  const { t } = useTranslation();
   const [finishedShowingLeaderboard, setFinishedShowingLeaderboard] =
     useState(false);
 
@@ -64,7 +66,7 @@ export const Leaderboard = ({
         letterSpacing={5}
         paddingX={10}
       >
-        Leaderboard
+        {t("common.leaderboard")}
       </Typography>
       <div className="flex flex-col gap-4 w-full">
         {[...(room?.players ?? [])]

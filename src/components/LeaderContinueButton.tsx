@@ -1,5 +1,6 @@
 import { Button, Typography } from "@mui/material";
 import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 
 type LeaderButtonProps = {
   onClick: () => void;
@@ -12,8 +13,9 @@ export const LeaderButton = ({
   disabled,
   userIsLeader,
   onClick,
-  children = "Continue",
+  children = null,
 }: LeaderButtonProps) => {
+  const { t } = useTranslation();
   return (
     <div className="flex flex-col justify-center items-center">
       <Button
@@ -24,7 +26,7 @@ export const LeaderButton = ({
           onClick();
         }}
       >
-        {children}
+        {children ?? t("common.continue")}
       </Button>
       {!userIsLeader && !disabled && (
         <Typography
@@ -33,7 +35,7 @@ export const LeaderButton = ({
           className="animate-pulse"
           color="primary"
         >
-          Waiting room leader...
+          {t("common.waitingRoomLeader")}
         </Typography>
       )}
     </div>
