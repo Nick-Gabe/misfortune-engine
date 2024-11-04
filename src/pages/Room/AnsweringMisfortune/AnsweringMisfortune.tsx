@@ -172,7 +172,7 @@ export const AnsweringMisfortune = ({
           >
             {answer.length}/{maxAnswerLength}
           </Typography>
-          <div className="h-9">
+          <div className="h-9 pb-12 md:pb-0">
             {answered ? (
               <Typography variant="body1" color="white">
                 {t("pages.answeringMisfortune.answerSubmitted")}
