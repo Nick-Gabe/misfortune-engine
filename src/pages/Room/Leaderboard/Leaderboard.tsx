@@ -126,18 +126,20 @@ export const Leaderboard = ({
                   <Typography
                     variant="body1"
                     fontWeight="bold"
-                    className="flex gap-2"
+                    className="flex gap-2 items-center w-full"
                   >
                     {playerIsLeader && (
                       <Crown
                         weight="fill"
                         size={20}
-                        className="text-yellow-400"
+                        className="text-yellow-400 min-w-4"
                         stroke="black"
                         strokeWidth={10}
                       />
                     )}
-                    {player.name}
+                    <span className="w-[calc(100%-260px)] truncate">
+                      {player.name}
+                    </span>
                   </Typography>
 
                   <div className="absolute flex mr-2 right-[50px] gap-2 h-full items-center">

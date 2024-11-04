@@ -44,7 +44,7 @@ export const AnsweringMisfortune = ({
   };
 
   return (
-    <div className="flex flex-col px-6 md:px-0 justify-center items-center gap-4">
+    <div className="flex flex-col px-6 md:px-0 md:overflow-hidden justify-center items-center gap-4">
       <CountdownCircleTimer
         isPlaying={announcedMisfortune}
         duration={60}
@@ -58,7 +58,7 @@ export const AnsweringMisfortune = ({
           <span className="text-slate-50">{remainingTime}</span>
         )}
       </CountdownCircleTimer>
-      <p className="flex whitespace-pre justify-center">
+      <p className="flex whitespace-pre justify-center max-w-[90vw]">
         {announcedMisfortune ? (
           <motion.span
             animate={{

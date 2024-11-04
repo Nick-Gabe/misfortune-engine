@@ -174,8 +174,8 @@ export const OutcomeShowcase = ({
         }}
       />
       {!room?.currentShowcase?.outcome ? (
-        <div className="h-[90vh] md:h-full flex items-center justify-center w-full">
-          <div className="md:fixed z-[10]">
+        <div className="h-[calc(90vh-100px)] md:h-full flex items-center justify-center w-full">
+          <div className="fixed z-[10]">
             <motion.div
               animate={{ opacity: 1, translateY: 0 }}
               initial={{ opacity: 0, translateY: 50 }}
@@ -251,7 +251,7 @@ export const OutcomeShowcase = ({
             {room?.currentMisfortune?.content}
           </Typography>
           <motion.div
-            className="bg-slate-600 border-2 p-4 max-w-[600px] w-[90vw] rounded-lg flex flex-col relative"
+            className="bg-slate-600 border-2 p-4 max-w-[600px] rounded-lg flex flex-col relative"
             key="modal"
             animate={{ opacity: 1, translateY: 0 }}
             initial={{ opacity: 0, translateY: 50 }}

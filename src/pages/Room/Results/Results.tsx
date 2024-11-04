@@ -23,7 +23,7 @@ export const Results = ({ room, publish, userIsLeader }: RoomScreenProps) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col w-full overflow-hidden h-[90vh] md:h-full justify-center items-center">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -47,7 +47,12 @@ export const Results = ({ room, publish, userIsLeader }: RoomScreenProps) => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 1 }}
               >
-                <Typography variant="h1" color="primary" fontSize={35}>
+                <Typography
+                  variant="h1"
+                  color="primary"
+                  textAlign="center"
+                  fontSize={35}
+                >
                   {t("pages.results.afterAllChallenges")}
                 </Typography>
               </motion.div>
@@ -58,7 +63,12 @@ export const Results = ({ room, publish, userIsLeader }: RoomScreenProps) => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 1, delay: 1.5 }}
               >
-                <Typography variant="h1" color="primary" fontSize={35}>
+                <Typography
+                  variant="h1"
+                  color="primary"
+                  textAlign="center"
+                  fontSize={35}
+                >
                   {t("pages.results.onePersonEmerged")}
                 </Typography>
               </motion.div>
@@ -70,7 +80,12 @@ export const Results = ({ room, publish, userIsLeader }: RoomScreenProps) => {
                 transition={{ duration: 2, delay: 3 }}
                 onAnimationComplete={() => setAnimationStep(1)}
               >
-                <Typography variant="h1" color="primary" fontSize={35}>
+                <Typography
+                  variant="h1"
+                  color="primary"
+                  textAlign="center"
+                  fontSize={35}
+                >
                   {t("pages.results.andItWas")}
                 </Typography>
               </motion.div>
@@ -188,6 +203,7 @@ export const Results = ({ room, publish, userIsLeader }: RoomScreenProps) => {
           className="mt-10"
           fontFamily="Handjet, monospace"
           fontWeight={700}
+          textAlign="center"
           letterSpacing={3}
         >
           {t("pages.results.isTheMisfortuneMaster")}
