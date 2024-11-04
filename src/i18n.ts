@@ -6,7 +6,14 @@ const getUiLanguage = () => {
   const browserLang = navigator.language;
   const params = new URLSearchParams(window.location.search);
 
-  return params.get('lang') ?? browserLang;
+  const validLangs = ['en', 'pt-BR'];
+  const userLang = params.get('lang') ?? browserLang;
+
+  const userLanguageIsSupported = validLangs.some(lang => lang === userLang || lang.split('-')[0] === userLang);
+  if (!userLanguageIsSupported) {
+    return validLangs[0];
+  };
+  return userLang;
 };
 
 i18n.use(initReactI18next).init({
