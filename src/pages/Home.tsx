@@ -4,10 +4,12 @@ import { nanoid } from "nanoid";
 import { useLocalStorage } from "../shared/useStorage";
 import { AnimatedBackground } from "animated-backgrounds";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const maxNameLength = 20;
 
 export const Home = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [user, setUser] = useLocalStorage<User>("user", {
     id: nanoid(8),
@@ -57,7 +59,7 @@ export const Home = () => {
       </Typography>
       <div className="flex flex-col items-center justify-center mb-6">
         <Typography variant="body1" color="primary">
-          How should I call you?
+          {t("pages.home.nameLabel")}
         </Typography>
         <div className="bg-yellow-100 rounded-md overflow-hidden [&_input]:pt-2 [&_input]:text-black-900">
           <TextField
@@ -79,7 +81,7 @@ export const Home = () => {
             onClick={() => enterRoom("versus")}
             disabled={!user.name.length}
           >
-            Enter room
+            {t("pages.home.joinRoom")}
           </Button>
         </div>
       ) : (
@@ -91,7 +93,7 @@ export const Home = () => {
             color="textPrimary"
             textAlign="center"
           >
-            Game modes
+            {t("common.gamemodes")}
           </Typography>
           <div className="flex justify-evenly">
             <Button
@@ -100,7 +102,7 @@ export const Home = () => {
               onClick={() => enterRoom("versus")}
               disabled={!user.name.length}
             >
-              Versus
+              {t("common.versus")}
             </Button>
           </div>
         </>
