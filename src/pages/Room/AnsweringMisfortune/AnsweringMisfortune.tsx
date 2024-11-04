@@ -44,7 +44,7 @@ export const AnsweringMisfortune = ({
   };
 
   return (
-    <div className="flex flex-col justify-center items-center gap-4">
+    <div className="flex flex-col px-6 md:px-0 justify-center items-center gap-4">
       <CountdownCircleTimer
         isPlaying={announcedMisfortune}
         duration={60}

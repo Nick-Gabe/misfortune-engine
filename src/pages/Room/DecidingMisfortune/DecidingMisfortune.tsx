@@ -66,7 +66,7 @@ export const DecidingMisfortune = ({
   }, [data]);
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex h-full items-center justify-center">
       <motion.div
         className="fixed z-10 bg-slate-800 py-4"
         animate={{ opacity: 1, translateY: 0 }}
