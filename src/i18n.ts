@@ -7,7 +7,7 @@ const getUiLanguage = () => {
   const params = new URLSearchParams(window.location.search);
 
   const validLangs = ['en', 'pt-BR'];
-  const userLang = params.get('lang') ?? browserLang;
+  const userLang = params.get('lang') ?? localStorage.getItem('language') ?? browserLang;
 
   const userLanguageIsSupported = validLangs.some(lang => lang === userLang || lang.split('-')[0] === userLang);
   if (!userLanguageIsSupported) {
