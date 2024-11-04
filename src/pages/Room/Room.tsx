@@ -5,7 +5,7 @@ import {
   VideoConference,
 } from "@superviz/react-sdk";
 import { WaitingRoom } from "./WaitingRoom/WaitingRoom";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useBeforeUnload, useLocation, useParams } from "react-router-dom";
 import { useLocalStorage } from "../../shared/useStorage";
 import { DecidingMisfortune } from "./DecidingMisfortune/DecidingMisfortune";
@@ -122,9 +122,11 @@ export const RoomWithoutProviders = () => {
 
   const ScreenComponent = screens[room?.screen || "waitingRoom"];
 
+  const userIsOnDesktop = useMemo(() => window.innerWidth > 768, []);
+
   useEffect(() => {
     const container = containerRef.current;
-    if (!container || !videoMounted) {
+    if (!userIsOnDesktop || !container || !videoMounted) {
       return;
     }
 
@@ -137,11 +139,11 @@ export const RoomWithoutProviders = () => {
     return () => {
       observer.disconnect();
     };
-  }, [videoMounted]);
+  }, [videoMounted, userIsOnDesktop]);
 
   return (
     <div
-      className="h-full w-full flex flex-col justify-center items-center"
+      className="h-[90vh] w-full flex flex-col md:justify-center items-center"
       style={{
         transition: "max-height 0.3s ease",
       }}
@@ -156,19 +158,21 @@ export const RoomWithoutProviders = () => {
       <div className="absolute">
         <Realtime />
       </div>
-      <VideoConference
-        participantType="host"
-        enableRecording={false}
-        skipMeetingSettings
-        allowGuests
-        screenshareOff
-        onMount={() => setVideoMounted(true)}
-        onMeetingStart={() => setVideoMounted(true)}
-        collaborationMode={{
-          enabled: true,
-          position: "bottom",
-        }}
-      />
+      {userIsOnDesktop && (
+        <VideoConference
+          participantType="host"
+          enableRecording={false}
+          skipMeetingSettings
+          allowGuests
+          screenshareOff
+          onMount={() => setVideoMounted(true)}
+          onMeetingStart={() => setVideoMounted(true)}
+          collaborationMode={{
+            enabled: true,
+            position: "bottom",
+          }}
+        />
+      )}
     </div>
   );
 };

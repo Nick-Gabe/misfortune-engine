@@ -28,11 +28,13 @@ export const WaitingRoom = ({
 
   return (
     <main className="flex flex-col gap-10 items-center">
-      <div className="grid grid-cols-2 gap-10 px-5">
+      <div className="grid md:grid-cols-2 gap-10 px-5">
         <PlayerList players={room?.players || []} onCopyLink={shareRoom} />
-        <GamemodeDescription gamemode="versus" />
+        <div className="pb-32 md:pb-0">
+          <GamemodeDescription gamemode="versus" />
+        </div>
       </div>
-      <div className="flex gap-5">
+      <div className="flex justify-center gap-5 fixed bottom-0 bg-slate-800 w-full pt-4 pb-10 md:py-0 md:relative">
         <Button variant="outlined" color="primary" onClick={shareRoom}>
           {t("pages.waitingRoom.shareRoomButton")}
         </Button>

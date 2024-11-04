@@ -34,7 +34,7 @@ const StaticButtons = () => {
   };
 
   return (
-    <div className="flex w-full justify-between p-5 md:fixed top-0 right-0">
+    <div className="flex w-full h-[10vh] justify-between p-5 md:fixed top-0 right-0">
       <div className="flex">
         <label htmlFor="language" className="w-0 h-0 invisible">
           {t("language")}
@@ -49,15 +49,17 @@ const StaticButtons = () => {
           <MenuItem value="pt-BR">🇧🇷</MenuItem>
         </Select>
       </div>
-      {location.pathname !== "/" && (
-        <Tooltip title={t("common.exitRoom")}>
-          <IconButton color="primary" className="!p-0">
-            <a href="/">
-              <ExitToApp fontSize="large" />
-            </a>
-          </IconButton>
-        </Tooltip>
-      )}
+      <div className="flex items-start">
+        {location.pathname !== "/" && (
+          <Tooltip title={t("common.exitRoom")}>
+            <IconButton color="primary" className="!p-0">
+              <a href="/">
+                <ExitToApp fontSize="large" />
+              </a>
+            </IconButton>
+          </Tooltip>
+        )}
+      </div>
     </div>
   );
 };
