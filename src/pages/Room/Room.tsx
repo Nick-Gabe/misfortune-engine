@@ -80,9 +80,14 @@ export const RoomWithoutProviders = () => {
           return;
         }
         if (room?.players[0].id === user.id) {
+          // Sometimes the user refreshed the page but didn't leave the room state,
+          // so we filter it out and re-add it.
+          const playersWithoutUser = room.players.filter(
+            (p) => p.id !== payload.data.id
+          );
           realtime.publish("room:state", {
             ...room,
-            players: [...(room?.players || []), payload.data],
+            players: [...playersWithoutUser, payload.data],
           });
         }
       });
@@ -110,6 +115,17 @@ export const RoomWithoutProviders = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [realtime]);
+
+  // If the user doesn't join in 10 seconds, some connection error happened, so we reload the page.
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (!realtime.isReady) {
+        window.location.reload();
+      }
+    }, 10000); // 10 seconds
+
+    return () => clearTimeout(timeout);
+  }, [realtime.isReady]);
 
   const screens: Record<RoomScreen, (props: RoomScreenProps) => JSX.Element> = {
     waitingRoom: WaitingRoom,
