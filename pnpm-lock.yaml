@@ -29,6 +29,9 @@ dependencies:
   '@superviz/sdk':
     specifier: ^6.7.2
     version: 6.7.2
+  '@vercel/analytics':
+    specifier: ^1.3.2
+    version: 1.3.2(react@18.3.1)
   animated-backgrounds:
     specifier: ^1.0.11
     version: 1.0.11(react-dom@18.3.1)(react@18.3.1)
@@ -1672,6 +1675,21 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: true
 
+  /@vercel/analytics@1.3.2(react@18.3.1):
+    resolution: {integrity: sha512-n/Ws7skBbW+fUBMeg+jrT30+GP00jTHvCcL4fuVrShuML0uveEV/4vVUdvqEVnDgXIGfLm0GXW5EID2mCcRXhg==}
+    peerDependencies:
+      next: '>= 13'
+      react: ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      next:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      react: 18.3.1
+      server-only: 0.0.1
+    dev: false
+
   /@vitejs/plugin-react@4.3.3(vite@5.4.10):
     resolution: {integrity: sha512-NooDe9GpHGqNns1i8XDERg0Vsg5SSYRhRxxyTGogUdkdNt47jal+fbuYi+Yfq6pzRCKXyoPcWisfxE6RIM3GKA==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -3255,6 +3273,10 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dev: true
+
+  /server-only@0.0.1:
+    resolution: {integrity: sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA==}
+    dev: false
 
   /shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}

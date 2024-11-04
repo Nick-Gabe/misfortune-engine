@@ -19,6 +19,7 @@
     "@phosphor-icons/react": "^2.1.7",
     "@superviz/react-sdk": "^1.14.2",
     "@superviz/sdk": "^6.7.2",
+    "@vercel/analytics": "^1.3.2",
     "animated-backgrounds": "^1.0.11",
     "i18next": "^23.16.4",
     "nanoid": "^5.0.7",
