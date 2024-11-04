@@ -4,7 +4,11 @@
     "versus": "Versus",
     "players": "Jogadores",
     "loading": "Carregando",
-    "submit": "Enviar"
+    "submit": "Enviar",
+    "player": "Jogador",
+    "tried": "tentou",
+    "continue": "Continuar",
+    "points": "pontos"
   },
   "pages": {
     "home": {
@@ -43,6 +47,14 @@
       "howWouldYouSurvive": "Como você sobreviveria?",
       "answerPlaceholder": "Escreva sua resposta aqui",
       "answerSubmitted": "Resposta enviada, aguardando outras..."
+    },
+    "outcomeShowcase": {
+      "myNameIs": "Meu nome é",
+      "didNothing": "Eu não fiz nada para sobreviver",
+      "allChoicesWereMade": "Todas as escolhas foram feitas...",
+      "witnessConsequences": "Agora testemunhe as consequências",
+      "misfortuneWas": "A desventura foi:",
+      "outcomeWas": "E o resultado foi..."
     }
   }
 }

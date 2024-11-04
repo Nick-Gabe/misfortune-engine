@@ -4,7 +4,11 @@
     "versus": "Versus",
     "players": "Players",
     "loading": "Loading",
-    "submit": "Submit"
+    "submit": "Submit",
+    "player": "Player",
+    "tried": "tried",
+    "continue": "Continue",
+    "points": "points"
   },
   "pages": {
     "home": {
@@ -43,6 +47,14 @@
       "howWouldYouSurvive": "How would you survive?",
       "answerPlaceholder": "Write your answer here",
       "answerSubmitted": "Answer submitted, waiting for others..."
+    },
+    "outcomeShowcase": {
+      "myNameIs": "My name is",
+      "didNothing": "I did nothing to survive",
+      "allChoicesWereMade": "All choices were made...",
+      "witnessConsequences": "Now witness the consequences",
+      "misfortuneWas": "The misfortune was:",
+      "outcomeWas": "And the outcome was..."
     }
   }
 }
