@@ -17,7 +17,7 @@ export const TextSpinner = ({
   return (
     <motion.div className="circle" style={{ width: radius * 2 }}>
       <p aria-label={text} />
-      <p aria-hidden="true" className="text">
+      <p aria-hidden="true" className="text uppercase">
         {characters.map((ch, i) => (
           <motion.span
             key={i}

@@ -2,14 +2,15 @@
   "common": {
     "gamemodes": "Gamemodes",
     "versus": "Versus",
-    "players": "Players"
+    "players": "Players",
+    "loading": "Loading"
   },
   "pages": {
     "home": {
       "nameLabel": "How should I call you?",
       "joinRoom": "Join room"
     },
-    "room": {
+    "waitingRoom": {
       "shareRoomButton": "Share room",
       "shareRoomListButton": "Share the room to invite more players",
       "startGame": "Start game",
@@ -25,6 +26,17 @@
           "description": "Work together to solve the puzzle."
         }
       }
+    },
+    "decidingMisfortune": {
+      "announcements": {
+        "phrase1": "A shiver runs down your spine",
+        "phrase2": "You feel a chill in the air",
+        "phrase3": "The world around you darkens",
+        "phrase4": "A disaster is about to strike",
+        "phrase5": "You sense impending doom",
+        "phrase6": "You feel a sense of dread"
+      },
+      "gameWillStart": "The game will start"
     }
   }
 }

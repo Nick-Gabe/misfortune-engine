@@ -34,19 +34,19 @@ export const WaitingRoom = ({
       </div>
       <div className="flex gap-5">
         <Button variant="outlined" color="primary" onClick={shareRoom}>
-          {t("pages.room.shareRoomButton")}
+          {t("pages.waitingRoom.shareRoomButton")}
         </Button>
         <LeaderButton
           onClick={startGame}
           userIsLeader={userIsLeader}
           disabled={!room || room.players.length < 2}
         >
-          {t("pages.room.startGame")}
+          {t("pages.waitingRoom.startGame")}
         </LeaderButton>
       </div>
       <Snackbar
         open={showCopiedLink}
-        message={t("pages.room.roomLinkCopied")}
+        message={t("pages.waitingRoom.roomLinkCopied")}
         autoHideDuration={3000}
         onClose={(_, reason) => {
           if (reason === "clickaway") return;

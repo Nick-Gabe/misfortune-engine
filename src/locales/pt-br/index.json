@@ -2,14 +2,15 @@
   "common": {
     "gamemodes": "Modos de jogo",
     "versus": "Versus",
-    "players": "Jogadores"
+    "players": "Jogadores",
+    "loading": "Carregando"
   },
   "pages": {
     "home": {
       "nameLabel": "Como devo te chamar?",
       "joinRoom": "Entrar na sala"
     },
-    "room": {
+    "waitingRoom": {
       "shareRoomButton": "Compartilhar sala",
       "shareRoomListButton": "Compartilhe a sala para convidar mais jogadores",
       "startGame": "Iniciar jogo",
@@ -25,6 +26,17 @@
           "description": "Trabalhem juntos para resolver o enigma."
         }
       }
+    },
+    "decidingMisfortune": {
+      "announcements": {
+        "phrase1": "Um arrepio percorre sua espinha",
+        "phrase2": "Você sente um frio no ar",
+        "phrase3": "O mundo ao seu redor escurece",
+        "phrase4": "Um desastre está prestes a acontecer",
+        "phrase5": "Você sente a desgraça se aproximando",
+        "phrase6": "Você sente uma sensação de pavor"
+      },
+      "gameWillStart": "O jogo vai começar"
     }
   }
 }

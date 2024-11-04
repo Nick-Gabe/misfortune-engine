@@ -10,12 +10,12 @@ export const GamemodeDescription = (props: GamemodeDescriptionProps) => {
   const { t } = useTranslation();
   const gamemodeInfo = {
     coop: {
-      title: t("pages.room.modes.coop.title"),
-      description: t("pages.room.modes.coop.description"),
+      title: t("pages.waitingRoom.modes.coop.title"),
+      description: t("pages.waitingRoom.modes.coop.description"),
     },
     versus: {
-      title: t("pages.room.modes.versus.title"),
-      description: t("pages.room.modes.versus.description"),
+      title: t("pages.waitingRoom.modes.versus.title"),
+      description: t("pages.waitingRoom.modes.versus.description"),
     },
   };
 
@@ -33,7 +33,7 @@ export const GamemodeDescription = (props: GamemodeDescriptionProps) => {
         {gamemodeInfo[props.gamemode].description}
       </Typography>
       <Typography variant="body1" maxWidth="50ch" color="primary">
-        <Trans i18nKey="pages.room.leaderExplanation">
+        <Trans i18nKey="pages.waitingRoom.leaderExplanation">
           <Crown
             weight="fill"
             size={20}

@@ -53,7 +53,7 @@ export const PlayerList = (props: PlayerListProps) => {
         onClick={props.onCopyLink}
       >
         <Typography variant="body1">
-          {t("pages.room.shareRoomListButton")}
+          {t("pages.waitingRoom.shareRoomListButton")}
         </Typography>
       </button>
     </div>
