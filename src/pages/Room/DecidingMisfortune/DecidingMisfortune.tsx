@@ -87,9 +87,9 @@ export const DecidingMisfortune = ({
         transition={{ duration: 5, ease: "easeInOut", repeat: Infinity }}
       >
         <TextSpinner
-          text={`${t("common.loading")} ${t("common.loading")} ${t(
-            "common.loading"
-          )} ${t("common.loading")}`}
+          text={new Array(i18n.language.includes("pt") ? 3 : 4)
+            .fill(t("common.loading"))
+            .join(" ")}
           radius={110}
           fontSize={18}
           letterSpacing={11}

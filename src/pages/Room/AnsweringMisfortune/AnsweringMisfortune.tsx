@@ -4,12 +4,14 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { Lock } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 export const AnsweringMisfortune = ({
   room,
   publish,
   user,
 }: RoomScreenProps) => {
+  const { t } = useTranslation();
   const [announcedMisfortune, setAnnouncedMisfortune] = useState(false);
   const [answer, setAnswer] = useState("");
   const [answered, setAnswered] = useState(false);
@@ -80,7 +82,7 @@ export const AnsweringMisfortune = ({
                 body1: "span",
               }}
             >
-              How would you survive?
+              {t("pages.answeringMisfortune.howWouldYouSurvive")}
             </Typography>
           </motion.span>
         ) : (
@@ -152,12 +154,12 @@ export const AnsweringMisfortune = ({
               e.target.value.length <= maxAnswerLength &&
               setAnswer(e.target.value)
             }
-            placeholder="Write your answer here"
+            placeholder={t("pages.answeringMisfortune.answerPlaceholder")}
             color="primary"
             disabled={answered}
           />
           {answered && (
-            <div className="">
+            <div>
               <Lock htmlColor="white" />
             </div>
           )}
@@ -173,7 +175,7 @@ export const AnsweringMisfortune = ({
           <div className="h-9">
             {answered ? (
               <Typography variant="body1" color="white">
-                Answer submitted, waiting for others...
+                {t("pages.answeringMisfortune.answerSubmitted")}
               </Typography>
             ) : (
               <Button
@@ -182,7 +184,7 @@ export const AnsweringMisfortune = ({
                 onClick={sendAnswer}
                 disabled={answered}
               >
-                Submit
+                {t("common.submit")}
               </Button>
             )}
           </div>

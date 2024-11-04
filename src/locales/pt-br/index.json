@@ -3,7 +3,8 @@
     "gamemodes": "Modos de jogo",
     "versus": "Versus",
     "players": "Jogadores",
-    "loading": "Carregando"
+    "loading": "Carregando",
+    "submit": "Enviar"
   },
   "pages": {
     "home": {
@@ -37,6 +38,11 @@
         "phrase6": "Você sente uma sensação de pavor"
       },
       "gameWillStart": "O jogo vai começar"
+    },
+    "answeringMisfortune": {
+      "howWouldYouSurvive": "Como você sobreviveria?",
+      "answerPlaceholder": "Escreva sua resposta aqui",
+      "answerSubmitted": "Resposta enviada, aguardando outras..."
     }
   }
 }

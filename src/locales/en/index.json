@@ -3,7 +3,8 @@
     "gamemodes": "Gamemodes",
     "versus": "Versus",
     "players": "Players",
-    "loading": "Loading"
+    "loading": "Loading",
+    "submit": "Submit"
   },
   "pages": {
     "home": {
@@ -37,6 +38,11 @@
         "phrase6": "You feel a sense of dread"
       },
       "gameWillStart": "The game will start"
+    },
+    "answeringMisfortune": {
+      "howWouldYouSurvive": "How would you survive?",
+      "answerPlaceholder": "Write your answer here",
+      "answerSubmitted": "Answer submitted, waiting for others..."
     }
   }
 }
